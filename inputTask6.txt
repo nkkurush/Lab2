@@ -1,0 +1,17 @@
+/*Дан файл из символов. Используя стек, за один просмотр файла напечатать сначала все цифры,
+        затем все буквы, и, наконец, все остальные символы, сохраняя исходный порядок в каждой группе символов.*/
+        String fileName = "inputTask6.txt"; // Замените на имя вашего файла
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+        String line;
+        int i=0;
+            while ((line = br.readLine()) != null) {
+                i++;
+                if (checkBalancedSquareBrackets(line)) {
+                    System.out.println(i+" = Квадратные скобки в строке сбалансированы");
+                } else {
+                    System.out.println(i+" = Квадратные скобки в строке не сбалансированы");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }

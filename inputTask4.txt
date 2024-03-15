@@ -1,0 +1,29 @@
+public static void Task3() {
+        // Создание трех стеков для представления стержней A, B, C
+        Stack<Integer> stackA = new Stack<>();
+        Stack<Integer> stackB = new Stack<>();
+        Stack<Integer> stackC = new Stack<>(;
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        // Здесь следует добавить код для чтения информации о дисках из исходного файла и их размещения на стержне A
+        int i = 0;
+        while (n != 0) {
+            stackA.add(i);[
+            i++;
+            n--;
+        }
+        // Вызов метода для переноса дисков со стержня A на стержень C, используя стержень B в качестве промежуточного
+        moveDisks(stackA.size(), stackA, stackC, stackB);
+        System.out.println(stackC.size());
+        System.out.println(stackB.size());
+        System.out.println(stackA.size());
+    }
+
+    // Метод для рекурсивного переноса дисков
+    static void moveDisks(int n, Stack<Integer> source, Stack<Integer> destination, Stack<Integer> auxiliary) {
+        if (n > 0) {
+            moveDisks(n - 1, source, auxiliary, destination);
+            destination.push(source.pop());
+            moveDisks(n - 1, auxiliary, destination, source);
+        }
+    }
